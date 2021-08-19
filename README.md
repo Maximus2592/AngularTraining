@@ -65,7 +65,7 @@ Angular11
 
 
     Angular 
-    -------------------------------------------------------------------------------------------------------------------
+    --------------------------------------------------------------------------------------------------------------
 
         is a javascript based SPA framework.
 
@@ -118,7 +118,31 @@ Angular11
 
                                     ng --version
 
+    Angular CLI
+    ------------------------------------------------------------------------------------------------------
 
+        is a development utility tool that helps in 
+        creating and managing a angular project and its resources.
+
+        ng new proj-name
+
+        cd proj-name
+
+        ng g component component-name
+        ng g service service-name
+        ng g module module-name
+        ng g pipe pipe-name
+        ng g guard guard-name
+        ng g class class-name
+        ng g interface interface-name
+
+        ng serve --port portNumber -o              is used to compile and exe the proj in dev mode
+
+        ng build --prod                             is used to create a deployable bundle 
+                                                    to be deployed on prod server
+
+        ng test                                     is used to execute test cases.
+    
     Angular Archetecture
     ------------------------------------------------------------------------------------------------------
 
@@ -129,22 +153,123 @@ Angular11
             are called meta-data.
 
         Modules
+                    ES6 module are very different from angular modules
+
+                    Angular Module is a a small logical unit of the angular applciation.
+                    This module contains components, pipes, servives, directives
+                    ..etc and sub-modules as well.
+
+                    Each angular application must be inside one single module called
+                    'root module' represented by app.module.ts file.
+
+                    The root module cna furthur be organized into 
+                    sub-moduel called 'feature modules', these feature modules
+                    can be defiend by the developer or can be inbuilt or
+                    can be of thrid party libraries.
+
                     @NgModule({ 
-                        declarations:[],
-                        imports:[],
-                        exports:[],
-                        providers:[],
-                        bootstrap:[]
+                        declarations:[
+                            //list of components,pipes and directives
+                            //that belong to this module
+                        ],
+                        imports:[
+                            //list offeature modules thatmsut be imported
+                        ],
+                        exports:[
+                            //list of components/pipes/directive that belong to this module
+                            //and to be used in moduel that import the current module.
+                        ],
+                        providers:[
+                            //list of services that must be injected into
+                            //the current module
+                        ],
+                        bootstrap:[
+                            //the list of component that must be
+                            //instatiated immediatly after the current module is loaded.
+                        ]
                     })
                     export class MyModule{}
 
         Components
+
+                    the index.html (th only one page in a SPA), is
+                    divided into small smart sections called Components.
+
+                    Each component will have a template and a controller.
+                            template is the html content this component must render.
+                            controller is the script behind the template which
+                                manages the data (state),
+                                event handlling and all other procssing.
+
+                    Each component is used as a new html element. That the
+                    reason why we call that angular add extendability to html.
+
+                    my.component.ts
+                    -------------------------------------------
                     @Component({
-                        selector:'',
-                        templateUrl:'',
+                        selector:'my-component',
+                        templateUrl:'my.component.html',
                         providers:[]
                     })
-                    export class MyComponent{}
+                    export class MyComponent{
+                        welcomeText:string;
+                        constructor(){
+                            this.welcomeText="Hello Welcome all";
+                        }
+                    }
+
+                    my.component.html
+                    ---------------------------------------------
+                        <h2>{{welcomeText}}</h1>
+
+                    index.html
+                    ----------------------------------------------
+                     <body>
+                        <my-component></my-component>
+                     </body>
+
+
+                     Data Binding
+                     ----------------------------------------------
+                        where the method and field of the controller
+                        can be linked witht he elements in the
+                        template.
+
+                        as and when the value of the fields are modified,
+                        the content on the template also gets updated due to the
+                        observe and bind feature of angular.
+
+                        interpolation              
+                             {{expression}}
+
+                        one-way data binding
+                            an attribute of an element is boudn with a field.
+                            so that the value of the field is assigned to the attribute.
+
+                            <element attribute="value">content..</element>
+
+                            <element [attribute]="expression">content..</element>
+                            
+                        event binding
+                            assignign a mehtod to a event, so that the method gets 
+                            executed when the event fires...
+
+                            (event)="method()"
+
+                            angular event directive = html evetn - 'on'
+
+                                onClick         click
+                                onDblClick      dblClick
+                                onBlur          blur
+                                onChange        change
+                                onSubmit        ngSubmit
+
+
+                        two-way data binding
+                     
+                        style binding
+
+
 
         Directives
                     @Directive({ 
