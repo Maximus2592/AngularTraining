@@ -264,26 +264,81 @@ Angular11
                                 onChange        change
                                 onSubmit        ngSubmit
 
-
                         two-way data binding
+
+                            is needed to assign initial values to a form-element 
+                            and also to receive the value edited in the form-element.
+
+                            ngModel ----------> FormsModule
+
+                            [(ngModel)]="field"
                      
                         style binding
 
+                            [style.cssProperty]="field"
 
+                            [class]="{'class-name':flag1,'class-name2':flag2}"
 
         Directives
-                    @Directive({ 
-                        selector:'',
-                        providers:[]
-                    })
-                    export class Directive{}
+                    is a attribute defiend using angular.
+
+                    in-built directives
+
+                        ngModel
+                        click
+                        blur
+                        ....etc
+
+                    structural directives
+
+                        <element *ngIf="booleanExpression"></element>
+
+                        <element *ngFor="let val of array"></element>
+
+                        <element ngSwitch="expression">
+                            <subElement *ngSwitchCase="'val1'"></element>
+                            <subElement *ngSwitchCase="'val1'"></element>
+                            <subElement *ngSwitchCase="'val1'"></element>
+                            <subElement *ngSwitchCase="'val1'"></element>
+                        </element>
+
+                    user-defined directives
+
+                        @Directive({ 
+                            selector:'',
+                            providers:[]
+                        })
+                        export class Directive{}
 
         Pipes
-                    @Pipe({
-                        name:'',
-                        providers:[]
-                    })
-                    export class MyPipe{}
+
+                    is an instrument used to tranform a peice of data just before rendering
+                    it on the screen.
+
+                    in-built pipes
+
+                        uppercase
+                        lowercase
+                        titlecase
+
+                        number
+                        percent
+                        currency
+                        date
+
+                        json
+                        async
+
+                    user-defiend-pipes
+                        @Pipe({
+                            name:'',
+                            providers:[]
+                        })
+                        export class MyPipe implements Transform{
+                            transform(){
+                                //........
+                            }
+                        }
 
         Services
                     @Injectable({

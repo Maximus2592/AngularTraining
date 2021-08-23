@@ -1,0 +1,18 @@
+
+<h3>Arihtmetic Example</h3>
+
+<form>
+    <label>Operand1: <input type="number" name="op1" [(ngModel)]="n1" /></label>
+    <label>Operand2: <input type="number" name="op2" [(ngModel)]="n2" /></label>
+    <select name="s1" [(ngModel)]="action">
+        <option *ngFor="let a of actions" [value]="a">{{a}}</option>
+    </select>
+</form>
+
+<div [ngSwitch]="action">
+    <p *ngSwitchCase="'SUM'">SUM is {{n1+n2}}</p>
+    <p *ngSwitchCase="'DIF'">DIF is {{n1-n2}}</p>
+    <p *ngSwitchCase="'PRD'">PRD is {{n1*n2}}</p>
+    <p *ngSwitchCase="'QUT'">QUT is {{n1/n2}}</p>
+    <p *ngSwitchCase="'REM'">REM is {{n1%n2}}</p>
+</div>

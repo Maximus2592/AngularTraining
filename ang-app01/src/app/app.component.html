@@ -1,4 +1,27 @@
 <h1>{{title}}</h1>
+
+<form>
+    <label>
+        Web Application Title: 
+        <input type="text" name="tb1" [(ngModel)]="title"  />
+    </label>
+    <label>
+        Image Width:
+        <input type="range" min="50" max="800" name="r1" [(ngModel)]="imgWidth"/>
+        {{imgWidth}} px
+    </label>
+    <label><input type="checkbox" name="c4" [(ngModel)]="show"/>Show Welcome Image</label>
+    <label><input type="checkbox" name="c1" [(ngModel)]="isRounded"/>Apply Round Corners</label>
+    <label><input type="checkbox" name="c2" [(ngModel)]="isCentered"/>Align Center</label>
+    <label><input type="checkbox" name="c3" [(ngModel)]="isBordered"/>Apply Borders</label>
+</form>
+
 <div>
-    <img [src]="logo" (click)="swapLogos()" />
+    <img [src]="logo" (click)="swapLogos()"
+    [class]="{'center':isCentered,'rounded':isRounded,'border':isBordered}"
+    [style.width.px]="imgWidth" 
+    *ngIf="show"/>
 </div>
+
+<app-arth></app-arth>
+<app-pipes-demo></app-pipes-demo>

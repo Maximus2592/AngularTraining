@@ -10,6 +10,28 @@ h1{
 
 img{
     width:300px;
+}
+
+form{
+    width:50%;
+    text-align: center;
+    margin:20px auto;
+}
+
+label{
+    display: block;
+    width: 100%;
+}
+
+.rounded{
+    border-radius: 40%;
+}
+
+.center{
     margin:auto;
     display: block;
+}
+
+.border{
+    border:1px solid #000000;
 }
