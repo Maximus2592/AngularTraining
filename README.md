@@ -311,7 +311,6 @@ Angular11
                         export class Directive{}
 
         Pipes
-
                     is an instrument used to tranform a peice of data just before rendering
                     it on the screen.
 
@@ -345,11 +344,104 @@ Angular11
                         providedIn:'root'
                     })
                     export class MyServive{}
-
         Routes
         Gaurds
         Interceptors
         
+    Integrating Bootstrap
+    ------------------------------------------------------------------------
+
+        npm install bootstrap@4.0.0 --save
+
+        include the bootstrap.min.css in angular.json file
+
+    Typescript Interfaces as Models
+    ------------------------------------------------------------------------
+
+        typescript interface can hold data members and method declaration (methods with no implementation)
+
+        interface User{
+            public userName:string;
+            public passwotd:string;
+        }
+
+        let u1 : User = {userName:"Vamsy",password:''}; 
+
+    Angular Service and Injectors
+    ------------------------------------------------------------------------
+
+        service is used to hold bussiness logic.
+
+            like computations and caliculations.
+            holding common data across the application
+            rest api calls and mappings
+            ...etc.,
+
+        Injection means that the object of the service clas
+        will be supplied whenever needed by an Injector.
+
+        The Root Module has one injector called RootInjector,
+        and after that each Pipe,Service,Component,Directive and
+        sub-module will also have their own injectors.
+
+        ByDefault an object of a service is created by
+        the root-injector and supplied to all pipes,components,directive ..etc.,
+
+        but - as long as the service is not lsited in the providers:[] section
+        of the respective component/pipe/directive/sub-module.
+
+        If the service is listed in the providers:[] section of
+        a component/pipe/directive/sub-module, a service object is created
+        specific to that resource and is then injected.
+
+    Parent-Child component communication
+    -------------------------------------------------
+
+         parent can share data with the child
+         using an attribute defiend in the child using @Input() 
+         decoratot.
+
+         a child can emit data to the parent using an 
+         EventEmitter defined int eh child as @Output()
+         decorator.
+
+    Angular Forms
+    ------------------------------------------------------------------------
+        
+        Template Driven Forms
+
+            the form elements are 
+            bound with ngModel attribute coming from
+            FormsModule
+
+            less code on the controller and more code
+            on the template. easy to build.
+
+            but difficult to test and we have
+            a very little programatic control on these forms.
+
+            suited for small form having not more than
+            two or three fields.
+
+        Model Driven Forms / Reactive forms
+
+            the form is programatically constructed using
+            FormGroup and formControls from ReactiveFormsModule
+
+            And teh formControls are boudnwith the
+            html form.
+
+            The form is more written on the controller
+            and hence is easy to test and has more
+            prgramatic control.
+
+            these forms are used almsot 90% in the
+            angualr applications, as they support
+                custom validations,
+                easy testing
+                compliated forms and mdoel binding,
+                nested forms.
+
 
 
 
