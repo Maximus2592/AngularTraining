@@ -441,7 +441,56 @@ Angular11
                 easy testing
                 compliated forms and mdoel binding,
                 nested forms.
+  
+    Angular Routing
+    ------------------------------------------------------------------------
 
+        allows us to display a specific component for given
+        specific path (url-segment)
+
+        RoutingModule
+            Routes          is an array of 'Route' s
+            Route           is a configuaraion of a path
+                        {
+                            path:'',                            url-segment
+                            component:'',                       component that has to appear for givne url-segment
+                            redirectTo:'',                      if no component, then a path to redirect to.
+                            pathMatch:'full/startsWith',        
+                            children:[],
+                            canActivate:[],
+                            canDeactivate:[],
+                            canLoad:[],
+                            canChildActivate:[]
+                        }
+
+
+                        {path:'abc',pathMatch:'full',component:DashBoardComponent}
+                                http://localhost:8888/abc will only trigger the DashBoardCompoennt
+
+                        {path:'abc',pathMatch:'startsWith',component:DashBoardComponent}
+                                DashBoardComponent can be triggered by ony of the below urls
+                                    http://localhost:8888/abc
+                                    http://localhost:8888/abcd
+                                    http://localhost:8888/abcde
+                                    http://localhost:8888/abc/xys
+                                    http://localhost:8888/abcd/xyz/lmn ..etc
+
+            router-outlet           is a in-bulit component that reserves place for
+                                        a component that has to appear for the givne path..
+
+            routerLink              is a directive to be used a attribute instead of 'href'
+                                        to <a></a> to hold the path
+
+            ActivatedRoute          is a in-built service used to retrive information about
+                                    the currently active path, like current url, query parameters, path paramteres ...etc
+
+            Router                  is a in-buiilt service used to navigate from one component to
+                                    another
+
+                                        navgateByUrl('url')
+                                        navigate('url',{queryString:[],.....})
+
+        
 
 
 

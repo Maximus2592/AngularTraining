@@ -1,8 +1,7 @@
-<form class="form" #txnForm="ngForm" (ngSubmit)="handleFormSubmit()"> 
+<form class="form" [formGroup]="txnForm" (ngSubmit)="handleFormSubmit()"> 
     <div class="form-group">
         <label>Particulars</label>
-        <input type="text" class="form-control" name="p" [(ngModel)]="txn.particulars"
-        required minlength="5" #pControl="ngModel"/>
+        <input type="text" class="form-control" formControlName="particulars"/>
         <div class="m-0 p-0 text-strong" *ngIf="pControl.invalid && (pControl.dirty || pControl.touched)">
             <span *ngIf="pControl.errors?.required">This field is mandate</span>
             <span *ngIf="pControl.errors?.minlength">a minimum of 5 characters expected</span>
@@ -10,15 +9,22 @@
     </div> 
     <div class="form-group">
         <label>Amount</label>
-        <input type="number" class="form-control" name="a" [(ngModel)]="txn.amount"
-        required #aControl="ngModel"/>
+        <input type="number" class="form-control" formControlName="amount" />
         <div class="m-0 p-0 text-strong" *ngIf="aControl.invalid && (aControl.dirty || aControl.touched)">
             <span *ngIf="aControl.errors?.required">This field is mandate</span>
+            <span *ngIf="aControl.errors?.min">A non-negative non-zero numeric value expected</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Date Of Transaction</label>
+        <input type="date" class="form-control" formControlName="dateOfTransaction" />
+        <div class="m-0 p-0 text-strong" *ngIf="dControl.invalid && (dControl.dirty || dControl.touched)">
+            <span *ngIf="dControl.errors?.required">This field is mandate</span>
         </div>
     </div>
     <div class="form-group">
         <label>Type</label>
-        <select class="form-control" name="t" [(ngModel)]="txn.type" required #tControl="ngModel">
+        <select class="form-control" formControlName="type">
             <option value="">-----SELECT-------</option>
             <option value="INCOME">INCOME</option>
             <option value="SPENDING">SPENDING</option>

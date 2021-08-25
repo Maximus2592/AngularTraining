@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TransactionsComponent } from './transactions/transactions.component';
@@ -16,7 +16,8 @@ import { TransactionFormComponent } from './transaction-form/transaction-form.co
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
