@@ -1,0 +1,15 @@
+<div class="col-sm-9 m-2 p-4 border border-info">
+    <form class="form-inline" (ngSubmit)="handleFormSubmition()">
+        <label>Lower Bound: </label>
+        <input type="number" name="lb" [(ngModel)]="lb" class="form-control mr-2" />
+        <label>Upper Bound: </label>
+        <input type="number" name="ub" [(ngModel)]="ub" class="form-control mr-2" />
+        <button class="btn btn-sm btn-primary" [disabled]="isJobInProgress">GENERATE</button>
+    </form>
+    <div class="m-2 border border-danger p-2" *ngIf="errMsg || nums">
+        <p *ngIf="errMsg"><strong>{{errMsg}}</strong></p>
+        <p *ngIf="nums && nums.length>0">
+            <span *ngFor="let n of nums">{{n}}&nbsp;</span>
+        </p>
+    </div>
+</div>
