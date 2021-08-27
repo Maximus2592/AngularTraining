@@ -1,9 +1,15 @@
-<div class="col-sm-9 m-2 p-4 border border-info">
+<div class="col-sm-11 m-2 p-4 border border-info">
     <form class="form-inline" (ngSubmit)="handleFormSubmition()">
         <label>Lower Bound: </label>
         <input type="number" name="lb" [(ngModel)]="lb" class="form-control mr-2" />
         <label>Upper Bound: </label>
         <input type="number" name="ub" [(ngModel)]="ub" class="form-control mr-2" />
+        <label class="mr-2">
+            <input type="checkbox" [(ngModel)]="isSquared" name="ch1"/>Squares
+        </label>
+        <label class="mr-2">
+            <input type="checkbox" [(ngModel)]="isEven" name="ch2"/>Evens
+        </label>
         <button class="btn btn-sm btn-primary" [disabled]="isJobInProgress">GENERATE</button>
     </form>
     <div class="m-2 border border-danger p-2" *ngIf="errMsg || nums">

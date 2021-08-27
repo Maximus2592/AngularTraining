@@ -1,0 +1,50 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Vamsy Kiran",
+      "email": "vamsy.kiran@iiht.com",
+      "password": "p@$$w0rd"
+    },
+    {
+      "id": 2,
+      "name": "Suseela",
+      "email": "suseela@gmail.com",
+      "password": "p@$$w0rd"
+    }
+  ],
+  "txns": [
+    {
+      "id": 1,
+      "particulars": "Salary",
+      "dateOfTransaction": "2021-08-01",
+      "amount": 55000,
+      "type": "INCOME",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "particulars": "Rent",
+      "dateOfTransaction": "2021-08-02",
+      "amount": 5000,
+      "type": "SPENDING",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "particulars": "Mobile Bill",
+      "dateOfTransaction": "2021-08-02",
+      "amount": 1000,
+      "type": "SPENDING",
+      "userId": 1
+    },
+    {
+      "particulars": "Salary",
+      "dateOfTransaction": "2021-08-01",
+      "amount": 105000,
+      "type": "INCOMNE",
+      "userId": 2,
+      "id": 3
+    }
+  ]
+}

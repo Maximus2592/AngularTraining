@@ -12,27 +12,42 @@ export class NumberSeriesComponent implements OnInit {
   ub: number;
   isJobInProgress: boolean;
 
-  nums?:number[];
-  errMsg?:string;
+  nums?: number[];
+  errMsg?: string;
 
-  constructor(private numSeriesService:NumberSeriesService) {
-    this.lb=0;
-    this.ub=0;
-    this.isJobInProgress=false;
+  isSquared: boolean;
+  isEven: boolean;
+
+  constructor(private numSeriesService: NumberSeriesService) {
+    this.lb = 0;
+    this.ub = 0;
+    this.isJobInProgress = false;
+    this.isSquared = false;
+    this.isEven = false;
   }
 
   ngOnInit(): void {
   }
 
-  handleFormSubmition(){
-    this.isJobInProgress=true;
-    this.nums=[];
-    let ob = this.numSeriesService.generateSeries(this.lb,this.ub);
+  handleFormSubmition() {
+    this.isJobInProgress = true;
+    this.nums = [];
+
+    let ob;
+
+    if (this.isSquared && this.isEven)
+      ob = this.numSeriesService.generateEvenSquaredSeries(this.lb, this.ub);
+    else if (this.isEven)
+      ob = this.numSeriesService.generateEvenSeries(this.lb, this.ub);
+    else if (this.isSquared)
+      ob = this.numSeriesService.generateSquaredSeries(this.lb, this.ub);
+    else
+      ob = this.numSeriesService.generateSeries(this.lb, this.ub);
 
     ob.subscribe(
       n => this.nums?.push(n),
-      err => { this.errMsg=err; this.isJobInProgress=false;},
-      () => this.isJobInProgress=false
+      err => { this.errMsg = err; this.isJobInProgress = false; },
+      () => this.isJobInProgress = false
     );
   }
 }

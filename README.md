@@ -552,5 +552,45 @@ Angular11
                 () => {//the onComplte call back to react on job completion}
             );
 
+            RxJS Operators
 
+                creating an observable from another
+                observable.....
+
+                map
+                filter
+                tap
+                last
+                catch
+                ....etc
+
+    Fake Rest Api End Points Using json-server
+    ----------------------------------------------------------------------------
+
+        json-server is a js tool that can create rest end points to perform
+        CRUD operations on a .json file.
+
+        these rest end points are nto for real time usage.
+        only to learn ....
+
+        npm install json-server --save
+
+        json-server --port portNumber --watch dataFile.json
+
+
+    Rest Api Calls In Angular using HttpClient
+    ----------------------------------------------------------------------------
+
+    HttpClientModule
+       
+       HttpClient
+
+           get(url) :  Observable
+           post(url,reqBody) : Observable
+           put(url,reqBody) : Observable
+           delete(url) : Observable
+
+
+
+    
 
