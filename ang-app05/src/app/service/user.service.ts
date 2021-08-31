@@ -1,6 +1,7 @@
 import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { User } from '../model/user';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class UserService {
 
   usersAPI:string;
   constructor(private httpClient : HttpClient) {
-    this.usersAPI="http://localhost:8888/users";
+    this.usersAPI=environment.userAPI;
   }
 
   getAll():Observable<User[]>{

@@ -1,0 +1,38 @@
+<div class="col-sm-8 mx-auto">
+
+    <div class="alert alert-info p-1" *ngIf="!err && (!user || !txns)">
+        <strong>Please wait while loading data</strong>
+    </div>
+    
+    <div class="alert alert-danger p-1" *ngIf="err">
+        <strong>{{err}}</strong>
+    </div>
+
+    <h4 *ngIf="user">{{user.name}}'s Transactions</h4>
+
+    <table class="table table-border table-hover" *ngIf="txns">
+        <thead>
+            <tr *ngIf="txns.length===0">
+                <th>
+                    <strong>No records available</strong>
+                </th>
+            </tr>
+            <tr *ngIf="txns.length>0">
+                <th>Txn#</th>
+                <th>DOT</th>
+                <th>Particulars</th>
+                <th>Credit</th>
+                <th>Debit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of txns">
+                <td class="text-right">{{t.id}}</td>
+                <td class="text-center">{{t.dateOfTransaction|date:'dd-MMM-yyyy'}}</td>
+                <td class="text-left">{{t.particulars|uppercase}}</td>
+                <td class="text-right">{{t.type==='INCOME'?t.amount:''}}</td>
+                <td class="text-right">{{t.type==='SPENDING'?t.amount:''}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

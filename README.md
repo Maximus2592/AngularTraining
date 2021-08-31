@@ -577,7 +577,6 @@ Angular11
 
         json-server --port portNumber --watch dataFile.json
 
-
     Rest Api Calls In Angular using HttpClient
     ----------------------------------------------------------------------------
 
