@@ -31,8 +31,11 @@
                 <td>{{u.name|titlecase}}</td>
                 <td>{{u.email|lowercase}}</td>
                 <td>
-                    <a class="btn btn-sm btn-info" [routerLink]="['/txns',u.id]">
+                    <a class="btn btn-sm btn-info mr-1" [routerLink]="['/txns',u.id]">
                         transactions
+                    </a>
+                    <a class="btn btn-sm btn-secondary" [routerLink]="['/addTxn',u.id]">
+                        new transaction
                     </a>
                 </td>
             </tr>

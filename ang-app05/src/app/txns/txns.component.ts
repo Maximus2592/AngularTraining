@@ -32,14 +32,25 @@ export class TxnsComponent implements OnInit {
         err=>{console.log(err);this.err="User details fetech failed!"}
       );
 
-      this.txnService.gatAllByUserId(userId).subscribe(
-        data => this.txns=data,
-        err=>{console.log(err);this.err="Transactions fetech failed!"}
-      );
+      this.loadTxns(userId);
 
     }else{
       this.err="User not recognized";
     }
+  }
+
+  loadTxns(userId:number){
+    this.txnService.gatAllByUserId(userId).subscribe(
+      data => this.txns=data,
+      err=>{console.log(err);this.err="Transactions fetech failed!"}
+    );
+  }
+
+  remove(txId:number){
+    this.txnService.deleteById(txId).subscribe(
+      () => this.loadTxns(this.user?.id??0),
+      err=>{console.log(err);this.err="Transactions fetech failed!"}
+    );
   }
 
 }

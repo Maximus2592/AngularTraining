@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { TxnsComponent } from './txns/txns.component';
 import { TxnFormComponent } from './txn-form/txn-form.component';
+import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     TxnsComponent,
-    TxnFormComponent
+    TxnFormComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,
