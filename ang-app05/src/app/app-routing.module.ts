@@ -9,8 +9,10 @@ import { UsersComponent } from './users/users.component';
 const routes: Routes = [
   {path:'users',component:UsersComponent},
   {path:'addUser',component:UserFormComponent},
+  {path:'editUser/:uid',component:UserFormComponent},
   {path:'txns/:uid',component:TxnsComponent},
   {path:'addTxn/:uid',component:TxnFormComponent},
+  {path:'editTxn/:tid',component:TxnFormComponent},
   {path:'',pathMatch:'full',redirectTo:'/users'}
 ];
 

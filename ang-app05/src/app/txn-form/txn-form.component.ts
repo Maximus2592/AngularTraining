@@ -21,10 +21,14 @@ export class TxnFormComponent implements OnInit {
 
   err?:string;
 
+  isNew:boolean;
+
   constructor(
     private activatedRoute:ActivatedRoute,
     private txnService:TxnService,
     private router:Router) {
+
+    this.isNew=true;
 
     this.id=new FormControl(0);
     this.particulars=new FormControl('',[Validators.required,Validators.minLength(5)]);
@@ -44,10 +48,26 @@ export class TxnFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let txnId = this.activatedRoute.snapshot.params.tid;
+    if(txnId){
+      this.isNew=false;
+      this.txnService.getById(txnId).subscribe(
+        data => this.txnForm.setValue(data),
+        err => {console.log(err);this.err="Unable to load transaction"}  
+      );
+    }
   }
 
   formSubmited(){
-    this.txnService.add(this.txnForm.value).subscribe(
+    let ob;
+    
+    if(this.isNew){
+      ob=this.txnService.add(this.txnForm.value);
+    }else{
+      ob= this.txnService.update(this.txnForm.value);
+    }
+
+    ob.subscribe(
       data => this.router.navigate(["/txns",this.userId.value]),
       err => {console.log(err);this.err="Unable to save transaction"}
     );

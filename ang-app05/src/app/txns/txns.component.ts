@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Transaction } from '../model/transaction';
+import { TransactionSummary } from '../model/transaction-summary';
 import { User } from '../model/user';
 import { TxnService } from '../service/txn.service';
 import { UserService } from '../service/user.service';
@@ -13,7 +14,7 @@ import { UserService } from '../service/user.service';
 export class TxnsComponent implements OnInit {
 
   user?:User;
-  txns?:Transaction[];
+  txnSmry?:TransactionSummary;
   err?:string;
 
   constructor(
@@ -40,14 +41,14 @@ export class TxnsComponent implements OnInit {
   }
 
   loadTxns(userId:number){
-    this.txnService.gatAllByUserId(userId).subscribe(
-      data => this.txns=data,
+    this.txnService.getTransactionSummaryByUserId(userId).subscribe(
+      data => this.txnSmry=data,
       err=>{console.log(err);this.err="Transactions fetech failed!"}
     );
   }
 
-  remove(txId:number){
-    this.txnService.deleteById(txId).subscribe(
+  remove(txId?:number){
+    this.txnService.deleteById(txId??0).subscribe(
       () => this.loadTxns(this.user?.id??0),
       err=>{console.log(err);this.err="Transactions fetech failed!"}
     );

@@ -1,6 +1,4 @@
-<div class="col-sm-7 mx-auto">
-
-
+<div class="col-sm-9 mx-auto">
     <h4>Users List</h4>
 
     <div class="alert alert-info p-1" *ngIf="!err && !users">
@@ -31,6 +29,9 @@
                 <td>{{u.name|titlecase}}</td>
                 <td>{{u.email|lowercase}}</td>
                 <td>
+                    <a class="btn btn-sm btn-primary mr-1" [routerLink]="['/editUser',u.id]">
+                        edit
+                    </a>
                     <a class="btn btn-sm btn-info mr-1" [routerLink]="['/txns',u.id]">
                         transactions
                     </a>

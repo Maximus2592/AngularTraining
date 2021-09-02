@@ -1,6 +1,6 @@
 <div class="col-sm-5 mx-auto">
 
-    <h4>New Transaction</h4>
+    <h4>{{isNew?"New":"Edit"}} Transaction</h4>
 
     <div class="alert alert-danger p-1" *ngIf="err">
         <strong>{{err}}</strong>

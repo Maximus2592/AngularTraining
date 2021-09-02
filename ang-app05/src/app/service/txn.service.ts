@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Transaction } from '../model/transaction';
+import {map} from 'rxjs/operators';
+import { TransactionSummary } from '../model/transaction-summary';
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +21,37 @@ export class TxnService {
     return this.httpClient.get<Transaction[]>(this.txnAPI);
   }
 
-  gatById(txnId:number):Observable<Transaction>{
-    return this.httpClient.get<Transaction>(`${this.txnAPI}/${txnId}`);
-  }
-
   gatAllByUserId(userId:number):Observable<Transaction[]>{
     return this.httpClient.get<Transaction[]>(`${this.txnAPI}?userId=${userId}`);
+  }
+
+  getTransactionSummaryByUserId(userId:number):Observable<TransactionSummary>{
+    return this.httpClient.get<Transaction[]>(`${this.txnAPI}?userId=${userId}`).pipe(
+      map(txns => {
+
+        let incomes = txns.filter(t => t.type==='INCOME');
+        let spendings = txns.filter(t => t.type==='SPENDING');
+
+        let totalIncome:number=
+          (incomes && incomes.length>0)? 
+            incomes.map(t => t.amount).
+            reduce((a1,a2)=>((a1??0)+(a2??0)))??0 :0;
+
+        let totalSpending:number=
+          (spendings && spendings.length>0)? 
+            spendings.map(t => t.amount).
+            reduce((a1,a2)=>((a1??0)+(a2??0)))??0 :0;
+            
+        let balance:number=totalIncome-totalSpending;
+
+        let txnSmry : TransactionSummary = {txns,totalIncome,totalSpending,balance};
+        return txnSmry;;
+      })
+    );
+  }
+
+  getById(txnId:number):Observable<Transaction>{
+    return this.httpClient.get<Transaction>(`${this.txnAPI}/${txnId}`);
   }
 
   add(txn:Transaction):Observable<Transaction>{

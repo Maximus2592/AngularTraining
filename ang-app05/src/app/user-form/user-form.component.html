@@ -1,6 +1,6 @@
 <div class="col-sm-5 mx-auto">
 
-    <h4>New User</h4>
+    <h4>{{isNew?"New":"Edit"}} User</h4>
 
     <div class="alert alert-danger p-1" *ngIf="err">
         <strong>{{err}}</strong>
@@ -32,7 +32,7 @@
             </div>
         </div>
         
-        <button class="btn btn-block btn-primary" [disabled]="txnForm.invalid">
+        <button class="btn btn-block btn-primary" [disabled]="userForm.invalid">
             Save User
         </button>
     </form>

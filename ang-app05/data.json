@@ -24,9 +24,9 @@
     },
     {
       "id": 2,
+      "amount": 1500,
       "particulars": "Mobile Bill",
       "dateOfTransaction": "2021-08-02",
-      "amount": 1000,
       "type": "SPENDING",
       "userId": 1
     },
