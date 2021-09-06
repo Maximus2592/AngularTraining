@@ -34,7 +34,7 @@ export class TxnFormComponent implements OnInit {
     this.particulars=new FormControl('',[Validators.required,Validators.minLength(5)]);
     this.amount=new FormControl(0,[Validators.required,Validators.min(1)]);
     this.dateOfTransaction=new FormControl((new Date()).toISOString().substr(0,10),[Validators.required]);
-    this.userId=new FormControl(this.activatedRoute.snapshot.params.uid);
+    this.userId=new FormControl(this.activatedRoute.snapshot.parent?.params.uid);
     this.type=new FormControl('',[Validators.required]);
 
     this.txnForm=new FormGroup({

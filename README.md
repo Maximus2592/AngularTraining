@@ -589,7 +589,43 @@ Angular11
            put(url,reqBody) : Observable
            delete(url) : Observable
 
+    Modularization
+    --------------------------------------------------------------------------------
+    Domain: A domain NgModule is organized around a feature, business domain, or user experience.
+    Routed: The top component of the NgModule acts as the destination of a router navigation route.
+    Routing: A routing NgModule provides the routing configuration for another NgModule.
+    Service: A service NgModule provides utility services such as data access and messaging.
+    Widget: A widget NgModule makes a component, directive, or pipe available to other NgModules.
+    Shared: A shared NgModule makes a set of components, directives, and pipes available to other NgModules.
 
+            NgModule	Declarations	Providers	    Exports	        Imported by
+            ------------------------------------------------------------------------------
+            Domain	        Yes	        Rare	        Top component	Another domain, AppModule
+            Routed	        Yes	        Rare	        No	            None
+            Routing	        No	        Yes (Guards)	RouterModule	Another domain (for routing)
+            Service	        No	        Yes	            No	            AppModule
+            Widget	        Yes	        Rare	        Yes	            Another domain
+            Shared	        Yes	        No	            Yes	            Another domain
 
+    ng g module Shared
+    ng g module Widgets
+    ng g module Services --module app.module
+
+    lazy loading a domain module
+    -------------------------------------------------------------
+    ng g module EntityDoamin --route entity --module app.module
+
+    Router Guards
+    ----------------------------------------------------------------------------------
+
+    is used to protect a route from being accessed
+    only when it is allowed to access.
+
+    Angular provides four types of RouterGuards (interfaces)
+
+        CanActivate            control if a route can be entered or not
+        CanDeactivate          control if a route can be left or not
+        CanLoad                controls if a lazy loaded route should be laoded or not
+        CanChildActivate       control if child-routes can be entered or not
     
 

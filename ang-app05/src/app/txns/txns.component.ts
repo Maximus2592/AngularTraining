@@ -24,7 +24,9 @@ export class TxnsComponent implements OnInit {
 
   ngOnInit(): void {
     
-    let userId= this.activatedRoute.snapshot.params.uid;
+    //let userId= this.activatedRoute.snapshot.params.uid;
+
+    let userId= this.activatedRoute.snapshot.parent?.params.uid;
 
     if(userId){
 

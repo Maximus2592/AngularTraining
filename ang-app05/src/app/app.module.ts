@@ -9,6 +9,7 @@ import { UsersComponent } from './users/users.component';
 import { TxnsComponent } from './txns/txns.component';
 import { TxnFormComponent } from './txn-form/txn-form.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { TxnHomeComponent } from './txn-home/txn-home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UserFormComponent } from './user-form/user-form.component';
     UsersComponent,
     TxnsComponent,
     TxnFormComponent,
-    UserFormComponent
+    UserFormComponent,
+    TxnHomeComponent
   ],
   imports: [
     BrowserModule,

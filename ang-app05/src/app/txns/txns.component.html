@@ -34,7 +34,7 @@
                 <td class="text-right">{{t.type==='INCOME'?t.amount:''}}</td>
                 <td class="text-right">{{t.type==='SPENDING'?t.amount:''}}</td>
                 <td class="text-center">
-                    <a class="btn btn-sm btn-primary mr-2" [routerLink]="['/editTxn',t.id]">EDIT</a>
+                    <a class="btn btn-sm btn-primary mr-2" [routerLink]="['../editTxn',t.id]">EDIT</a>
                     <button class="btn btn-sm btn-danger" (click)="remove(t.id)">DELETE</button>
                 </td>
             </tr>

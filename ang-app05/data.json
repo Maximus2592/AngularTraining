@@ -45,6 +45,14 @@
       "dateOfTransaction": "2021-09-01",
       "type": "SPENDING",
       "userId": "2"
+    },
+    {
+      "id": 5,
+      "amount": 6000,
+      "particulars": "CAR Fuel",
+      "dateOfTransaction": "2021-09-06",
+      "type": "SPENDING",
+      "userId": "1"
     }
   ]
 }
