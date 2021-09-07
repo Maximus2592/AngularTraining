@@ -9,6 +9,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
   declarations: [MessageBoxComponent, NavBarComponent],
   imports: [
     CommonModule
+  ],
+  exports:[
+    MessageBoxComponent, NavBarComponent
   ]
 })
 export class WidgetModule { }

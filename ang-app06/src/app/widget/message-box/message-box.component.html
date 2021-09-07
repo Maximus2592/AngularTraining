@@ -1,1 +1,11 @@
-<p>message-box works!</p>
+
+<div *ngIf="msg" [class]="{'alert':true,'alert-info':type==='info','alert-danger':type==='error'}">
+    <div class="row">
+        <div class="col">
+            <strong>{{msg}}</strong>
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-block btn-primary" (click)="raiseOkClicked()">OK</button>"
+        </div>
+    </div>
+</div>

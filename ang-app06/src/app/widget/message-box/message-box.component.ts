@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input,EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-message-box',
   templateUrl: './message-box.component.html',
   styleUrls: ['./message-box.component.css']
 })
-export class MessageBoxComponent implements OnInit {
+export class MessageBoxComponent {
 
-  constructor() { }
+  @Input()
+  msg?:string;
 
-  ngOnInit(): void {
+  @Input()
+  type?:string;
+
+  @Output()
+  okClicked:EventEmitter<void>;
+
+  constructor() {
+    this.okClicked=new EventEmitter<void>();
   }
 
+  raiseOkClicked(){
+    this.okClicked.emit();
+  }
 }

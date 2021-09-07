@@ -1,17 +1,27 @@
-{ "users": [
-  {
-    "id": 1,
-    "name": "Vamsy Kiran",
-    "email": "vamsy.kiran@iiht.com",
-    "password": "p@$$w0rd"
-  },
-  {
-    "id": 2,
-    "name": "Suseela",
-    "email": "suseela@gmail.com",
-    "password": "p@$$w0rd"
-  }
-],
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Vamsy Kiran",
+      "email": "vamsy.kiran@iiht.com",
+      "password": "p@$$w0rd",
+      "role":"USER"
+    },
+    {
+      "id": 2,
+      "name": "Suseela",
+      "email": "suseela@gmail.com",
+      "password": "p@$$w0rd",
+      "role":"USER"
+    },
+    {
+      "id":3,
+      "name":"Admin",
+      "email":"admin@gmail.com",
+      "password":"p@$$w0rd",
+      "role":"ADMIN"
+    }
+  ],
   "txns": [
     {
       "id": 1,
