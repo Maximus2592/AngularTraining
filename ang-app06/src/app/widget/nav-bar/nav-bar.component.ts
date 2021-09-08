@@ -14,7 +14,7 @@ export class NavBarComponent  {
   links?:string[][];
 
   @Output()
-  logoutClicked:EventEmitter<void>();
+  logoutClicked:EventEmitter<void>;
 
   constructor() {
     this.logoutClicked=new EventEmitter<void>();

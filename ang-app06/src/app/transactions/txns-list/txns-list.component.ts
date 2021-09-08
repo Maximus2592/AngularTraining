@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Transaction } from 'src/app/models/transaction';
+import { User } from 'src/app/models/user';
+import { TxnsService } from 'src/app/service/txns.service';
+import { UsersService } from 'src/app/service/users.service';
 
 @Component({
   selector: 'app-txns-list',
@@ -7,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TxnsListComponent implements OnInit {
 
-  constructor() { }
+  user:User|null;
+  txns?:Transaction[];
+
+  constructor(private userService:UsersService,private txnService:TxnsService) {
+    this.user = this.userService.currentUser();
+  }
 
   ngOnInit(): void {
+    if(this.user){
+
+    }
   }
 
 }
