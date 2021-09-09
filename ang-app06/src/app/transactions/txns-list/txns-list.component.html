@@ -1,1 +1,57 @@
-<p>txns-list works!</p>
+<div class="col-sm-8 mx-auto">
+
+    <div class="alert alert-info p-1" *ngIf="!err && (!user || !txnSummary)">
+        <strong>Please wait while loading data</strong>
+    </div>
+    
+    <div class="alert alert-danger p-1" *ngIf="err">
+        <strong>{{err}}</strong>
+    </div>
+
+    <h4 *ngIf="user">{{user.name}}'s Transactions</h4>
+
+    <table class="table table-border table-hover" *ngIf="txnSummary">
+        <thead>
+            <tr *ngIf="txnSummary.txns.length===0">
+                <th>
+                    <strong>No records available</strong>
+                </th>
+            </tr>
+            <tr *ngIf="txnSummary.txns.length>0">
+                <th>Txn#</th>
+                <th>DOT</th>
+                <th>Particulars</th>
+                <th>Credit</th>
+                <th>Debit</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of txnSummary.txns">
+                <td class="text-right">{{t.id}}</td>
+                <td class="text-center">{{t.dateOfTransaction|date:'dd-MMM-yyyy'}}</td>
+                <td class="text-left">{{t.particulars|uppercase}}</td>
+                <td class="text-right">{{t.type==='INCOME'?t.amount:''}}</td>
+                <td class="text-right">{{t.type==='SPENDING'?t.amount:''}}</td>
+                <td class="text-center">
+                    <a class="btn btn-sm btn-primary mr-2" [routerLink]="['../edit',t.id]">EDIT</a>
+                    <button class="btn btn-sm btn-danger" (click)="remove(t.id)">DELETE</button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th class="text-right" colspan="3">Total</th>
+                <th class="text-right">{{txnSummary.totalIncome}}</th>
+                <th class="text-right">{{txnSummary.totalSpending}}</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th class="text-right" colspan="4">Balance</th>
+                <th class="text-right">{{txnSummary.balance}}</th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+

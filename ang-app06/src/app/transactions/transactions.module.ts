@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms'
 
 import { TransactionsRoutingModule } from './transactions-routing.module';
 import { TransactionsComponent } from './transactions.component';
@@ -12,7 +13,9 @@ import { WidgetModule } from '../widget/widget.module';
   imports: [
     CommonModule,
     TransactionsRoutingModule,
-    WidgetModule
+    WidgetModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class TransactionsModule { }

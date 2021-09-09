@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         else
           this.router.navigateByUrl("/txns");
       },
-      err => {console.log(err);err="Access Denied";}
+      err => {this.err=err;console.log(this.err);}
     );
   }
 }

@@ -1,1 +1,56 @@
-<p>txns-form works!</p>
+<div class="col-sm-5 mx-auto">
+
+    <h4>{{isNew?"New":"Edit"}} Transaction</h4>
+
+    <div class="alert alert-danger p-1" *ngIf="err">
+        <strong>{{err}}</strong>
+    </div>
+
+    <form class="form" [formGroup]="txnForm" (ngSubmit)="formSubmited()">
+        <div class="form-group">
+            <label>Transaction#</label>
+            <input type="number" formControlName="id" class="form-control" readonly/>
+        </div>
+        <div class="form-group">
+            <label>User Id</label>
+            <input type="number" formControlName="userId" class="form-control" readonly/>
+        </div>
+        <div class="form-group">
+            <label>Particulars</label>
+            <input type="text" formControlName="particulars" class="form-control" />
+            <div class="alert alert-danger" *ngIf="particulars.invalid &&(particulars.dirty || particulars.touched)">
+                <span *ngIf="particulars.errors?.required">This field is mandate</span>
+                <span *ngIf="particulars.errors?.minlength">A minmum of 5 chars expected</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Amount</label>
+            <input type="number" formControlName="amount" class="form-control" />
+            <div class="alert alert-danger" *ngIf="amount.invalid &&(amount.dirty || amount.touched)">
+                <span *ngIf="amount.errors?.required">This field is mandate</span>
+                <span *ngIf="amount.errors?.min">A non-zero positive value expected</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Date Of Transaction</label>
+            <input type="date" formControlName="dateOfTransaction" class="form-control" />
+            <div class="alert alert-danger" *ngIf="dateOfTransaction.invalid &&(dateOfTransaction.dirty || dateOfTransaction.touched)">
+                <span *ngIf="dateOfTransaction.errors?.required">This field is mandate</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Type</label>
+            <select class="form-control" formControlName="type">
+                <option value="INCOME">INCOME</option>
+                <option value="SPENDING">SPENDING</option>
+            </select>
+            <div class="alert alert-danger" *ngIf="type.invalid &&(type.dirty || type.touched)">
+                <span *ngIf="type.errors?.required">This field is mandate</span>
+            </div>
+        </div>
+        <button class="btn btn-block btn-primary" [disabled]="txnForm.invalid">
+            Save Transaction
+        </button>
+    </form>
+</div>
+

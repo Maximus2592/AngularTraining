@@ -19,6 +19,11 @@ export class UsersService {
   login(email:string,pwd:string):Observable<User>{
     return this.httpClient.get<User[]>(`${this.usersAPI}?email=${email}`).pipe(
       map( (users:User[]) => {
+        
+        if(!users || users.length===0){
+          throw "Invalid User Credits";
+        }
+
         let user = users[0];
         
         if(user.password!==pwd){
