@@ -1,1 +1,30 @@
-<p>registration works!</p>
+<form class="form" (ngSubmit)="register()" #f="ngForm">
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h4>Sign Up</h4>
+        </div>
+        <div class="card-body p-2">
+
+            <app-message-box *ngIf="err" [msg]="err" type="error"></app-message-box>
+            <app-message-box *ngIf="msg" [msg]="msg" type="info"></app-message-box>
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" [(ngModel)]="name" name="name" required class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" [(ngModel)]="email" name="email" required class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" [(ngModel)]="pwd" name="pwd" required class="form-control" />
+            </div>
+        </div>
+        <div class="card-footer text-right">
+            <button class="btn btn-primary" [disabled]="f.invalid">
+                Sign Up
+            </button>
+        </div>
+    </div>
+</form>

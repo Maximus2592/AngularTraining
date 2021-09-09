@@ -5,29 +5,29 @@
       "name": "Vamsy Kiran",
       "email": "vamsy.kiran@iiht.com",
       "password": "p@$$w0rd",
-      "role":"USER"
+      "role": "USER"
     },
     {
       "id": 2,
       "name": "Suseela",
       "email": "suseela@gmail.com",
       "password": "p@$$w0rd",
-      "role":"USER"
+      "role": "USER"
     },
     {
-      "id":3,
-      "name":"Admin",
-      "email":"admin@gmail.com",
-      "password":"p@$$w0rd",
-      "role":"ADMIN"
+      "id": 3,
+      "name": "Admin",
+      "email": "admin@gmail.com",
+      "password": "p@$$w0rd",
+      "role": "ADMIN"
     }
   ],
   "txns": [
     {
       "id": 1,
+      "amount": 55000,
       "particulars": "Salary",
       "dateOfTransaction": "2021-08-01",
-      "amount": 55000,
       "type": "INCOME",
       "userId": 1
     },
